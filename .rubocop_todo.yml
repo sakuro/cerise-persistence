@@ -6,30 +6,11 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Configuration parameters: Include, IgnoredGems, OnlyFor.
-# Include: **/*.gemfile, **/Gemfile, **/gems.rb
-Bundler/GemComment:
-  Exclude:
-    - 'Gemfile'
+# Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
+Metrics/MethodLength:
+  Max: 12
 
-# This cop supports unsafe autocorrection (--autocorrect-all).
-RSpec/BeEq:
+# Configuration parameters: RequireForNonPublicMethods.
+Style/DocumentationMethod:
   Exclude:
-    - 'spec/cerise/persistence_spec.rb'
-
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: be, be_nil
-RSpec/BeNil:
-  Exclude:
-    - 'spec/cerise/persistence_spec.rb'
-
-# This cop supports safe autocorrection (--autocorrect).
-RSpec/ExpectActual:
-  Exclude:
-    - 'spec/cerise/persistence_spec.rb'
-
-# Configuration parameters: IgnoreModules.
-Style/ConstantVisibility:
-  Exclude:
-    - 'lib/cerise/persistence/version.rb'
+    - 'lib/cerise/persistence/repository.rb'

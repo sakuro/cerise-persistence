@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["OZAWA Sakuro"]
   spec.email = ["10973+sakuro@users.noreply.github.com"]
 
-  spec.summary = "cerise-persistence"
-  spec.description = "cerise-persistence"
+  spec.summary = "Persistence support"
+  spec.description = "Simple persistence support for Hanami applications"
   spec.homepage = "https://github.com/sakuro/cerise-persistence"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.3.0"
@@ -31,9 +31,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
-
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
+  spec.add_dependency "hanami", "~> 2.1"
+  spec.add_dependency "rom", "~> 5.3"
+  spec.add_dependency "rom-repository", "~> 5.3"
+  spec.add_dependency "zeitwerk", "~> 2.6"
 end

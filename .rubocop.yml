@@ -16,8 +16,6 @@ inherit_mode:
     - Exclude
 
 require:
-  - rubocop-capybara
-  - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
@@ -31,3 +29,14 @@ AllCops:
     - spec/spec_helper.rb
     - spec/support/rspec.rb
     - "*.gemspec"
+
+Bundler/GemComment:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - lib/cerise-persistence.rb
+
+RSpec/MessageChain:
+  Exclude:
+    - 'spec/cerise/persistence/repository_spec.rb'
