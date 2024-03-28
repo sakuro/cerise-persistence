@@ -1,0 +1,12 @@
+# auto_register: false
+# frozen_string_literal: true
+
+require "cerise/persistence/repository"
+
+# @see <%= camelized_app_name %>::Repository
+module <%= camelized_app_name %>
+  # Base class of <%= camelized_app_name %> repositories
+  class Repository < Cerise::Persistence::Repository
+    include Deps[container: "persistence.rom"]
+  end
+end

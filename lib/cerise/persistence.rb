@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "persistence/entity"
-require_relative "persistence/repository"
-require_relative "persistence/version"
+require "hanami/cli"
 
 # @see Serise::Persistence
 module Cerise
@@ -17,13 +15,20 @@ module Cerise
         loader.push_dir(root)
         loader.ignore(
           "#{root}/cerise-persistence.rb",
-          "#{root}/cerise-persistence/entity.rb",
-          "#{root}/cerise-persistence/repository.rb",
           "#{root}/cerise/persistence/version.rb"
         )
       end
     end
 
     gem_loader.setup
+
+    require_relative "persistence/version"
+
+    if Hanami::CLI.within_hanami_app?
+      Hanami::CLI.after "install", Commands::Install
+      # Hanami::CLI.register "generate entity", Commands::Generate::Entity
+      # Hanami::CLI.register "generate relation", Commands::Generate::Relation
+      # Hanami::CLI.register "generate repository", Commands::Generate::Repository
+    end
   end
 end

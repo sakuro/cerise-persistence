@@ -1,0 +1,11 @@
+# auto_register: false
+# frozen_string_literal: true
+
+require "cerise/persistence/entity"
+
+# @see <%= camelized_app_name %>::Entity
+module <%= camelized_app_name %>
+  # Base class of <%= camelized_app_name %> entities
+  class Entity < Cerise::Persistence::Entity
+  end
+end

@@ -13,3 +13,4 @@ gem "rubocop-rake", "~> 0.6.0"
 gem "rubocop-rspec", "~> 2.27"
 
 gem "dry-files"
+gem "faker"

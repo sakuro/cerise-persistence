@@ -6,27 +6,15 @@ Simple persistence support for [Hanami applications](https://github.com/hanami/h
 
 Add this line to
 ```rb
-gem "cerise-persistence"
+group :cli, :development, :production, :test do
+    gem "cerise-persistence"
+end
 
 ## Usage
 
 ### Entity
 
-Create app/entity.rb:
-
-```rb
-# auto_register: false
-# frozen_string_literal: true
-
-require "cerise/persistence/entity"
-
-module Bookshelf
-  class Entity < Cerise::Persistence::Entity
-  end
-end
-```
-
-and inherit entity classes like:
+Inherit entity classes like:
 
 ```rb
 module Bookshelf
@@ -41,23 +29,7 @@ It is a subclass of `ROM::Struct`.
 
 ### Repository
 
-create app/repository.rb:
-
-```rb
-# auto_register: false
-# frozen_string_literal: true
-
-require "cerise/persistence/repository"
-
-module Bookshelf
-  class Repository < Cerise::Persistence::Repository
-    # This will be unnecessary in the future
-    include Deps[container: "persistence.rom"]
-  end
-end
-```
-
-and inherit repository classes like:
+Inherit repository classes like:
 
 ```
 module Bookshelf
@@ -71,9 +43,6 @@ end
 ## ToDo
 
 - provider
-- install command
-  - create app/entity.rb
-  - create app/repository.rb
 - generator
 
 ## License
