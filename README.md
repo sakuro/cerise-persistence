@@ -6,8 +6,8 @@ Simple persistence support for [Hanami applications](https://github.com/hanami/h
 
 Add this line to
 ```rb
-group :cli, :development, :production, :test do
-    gem "cerise-persistence"
+group :cli do
+  gem "cerise-persistence"
 end
 
 ## Usage
