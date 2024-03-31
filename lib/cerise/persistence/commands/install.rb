@@ -42,7 +42,7 @@ module Cerise
 
         private def create_app_entity_rb
           content = fs.read(
-            fs.expand_path(fs.join("..", "generators", "entity.rb.erb"), __dir__)
+            fs.expand_path(fs.join("..", "generators", "install/entity.rb.erb"), __dir__)
           )
 
           fs.write(
@@ -53,7 +53,7 @@ module Cerise
 
         private def create_app_repository_rb
           content = fs.read(
-            fs.expand_path(fs.join("..", "generators", "repository.rb.erb"), __dir__)
+            fs.expand_path(fs.join("..", "generators", "install/repository.rb.erb"), __dir__)
           )
           fs.write(
             fs.expand_path("app/repository.rb"),
