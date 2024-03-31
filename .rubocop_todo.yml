@@ -6,9 +6,16 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+# Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
+Metrics/MethodLength:
+  Max: 11
+
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
-  Max: 9
+  Max: 11
+
+RSpec/MultipleExpectations:
+  Max: 2
 
 # Configuration parameters: RequireForNonPublicMethods.
 Style/DocumentationMethod:

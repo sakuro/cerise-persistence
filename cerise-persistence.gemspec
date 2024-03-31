@@ -32,7 +32,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "hanami", "~> 2.1"
+  spec.add_dependency "pg", "~> 1.5"
   spec.add_dependency "rom", "~> 5.3"
   spec.add_dependency "rom-repository", "~> 5.3"
+  spec.add_dependency "rom-sql", "~> 3.6"
   spec.add_dependency "zeitwerk", "~> 2.6"
 end
