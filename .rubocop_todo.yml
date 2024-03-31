@@ -12,7 +12,7 @@ Metrics/MethodLength:
 
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
-  Max: 11
+  Max: 7
 
 RSpec/MultipleExpectations:
   Max: 2
