@@ -36,13 +36,14 @@ module Cerise
         def call(*, **)
           create_app_entity_rb
           create_app_repository_rb
+          create_config_providers_persistence_rb
           append_database_url_setting
           append_database_url_envvar
         end
 
         private def create_app_entity_rb
           content = fs.read(
-            fs.expand_path(fs.join("..", "generators", "install/entity.rb.erb"), __dir__)
+            fs.expand_path(fs.join("..", "generators", "install", "entity.rb.erb"), __dir__)
           )
 
           fs.write(
@@ -53,10 +54,20 @@ module Cerise
 
         private def create_app_repository_rb
           content = fs.read(
-            fs.expand_path(fs.join("..", "generators", "install/repository.rb.erb"), __dir__)
+            fs.expand_path(fs.join("..", "generators", "install", "repository.rb.erb"), __dir__)
           )
           fs.write(
             fs.expand_path("app/repository.rb"),
+            ERB.new(content, trim_mode: "-").result(context.ctx)
+          )
+        end
+
+        private def create_config_providers_persistence_rb
+          content = fs.read(
+            fs.expand_path(fs.join("..", "generators", "install", "provider.rb.erb"), __dir__)
+          )
+          fs.write(
+            fs.expand_path("config/providers/persistence.rb"),
             ERB.new(content, trim_mode: "-").result(context.ctx)
           )
         end

@@ -85,6 +85,38 @@ RSpec.describe Cerise::Persistence::Commands::Install, type: :cli do
       REPOSITORY_RB
     end
 
+    it "creates config/providers/persistence.rb" do
+      install.call(arbitrary_argument)
+
+      expect(fs.read("config/providers/persistence.rb")).to include(<<~PERSISTENCE_RB)
+        # frozen_string_literal: true
+
+        Hanami.app.register_provider :persistence, namespace: true do
+          prepare do
+            require "rom"
+
+            config = ROM::Configuration.new(:sql, target["settings"].database_url)
+
+            register "config", config
+            register "db", config.gateways[:default].connection
+          end
+
+          start do
+            config = target["persistence.config"]
+            config.auto_registration(
+              target.root.join("lib/#{underscored_app_name}/persistence"),
+              namespace: "#{camelized_app_name}::Persistence"
+            )
+            register "rom", ROM.container(config)
+          end
+
+          stop do
+            target["persistence.rom"].disconnect
+          end
+        end
+      PERSISTENCE_RB
+    end
+
     it "creates database_url setting" do
       with_envvars(PG_USER: "postgres", PG_HOST: "localhost", PG_PORT: "5432") do
         install.call(arbitrary_argument)
